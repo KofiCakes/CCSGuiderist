@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Avatar Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #36393f;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+    }
+
+    .layer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .avatar-layer {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .selected {
+      border: 2px solid #007bff;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 200px;
+      height: 40px;
+      margin: 20px auto;
+      background-color: #43b581;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .preview-title {
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .avatar-preview {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #fff;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1>Select Your Avatar</h1>
+  <div class="layer-container">
+    <div class="layer">
+      <img src="Eyes1.jpg" alt="Eyes 1" class="avatar-layer" id="eyes1">
+      <img src="Eyes2.jpg" alt="Eyes 2" class="avatar-layer" id="eyes2">
+      <img src="eyes3.jpg" alt="Eyes 3" class="avatar-layer" id="eyes3">
+      <img src="eyes4.jpg" alt="Eyes 4" class="avatar-layer" id="eyes4">
+    </div>
+    <div class="layer">
+      <img src="head1.jpg" alt="Head 1" class="avatar-layer" id="head1">
+      <img src="head2.jpg" alt="Head 2" class="avatar-layer" id="head2">
+      <img src="head3.jpg" alt="Head 3" class="avatar-layer" id="head3">
+      <img src="head4.jpg" alt="Head 4" class="avatar-layer" id="head4">
+    </div>
+    <div class="layer">
+      <img src="mouth1.jpg" alt="Mouth 1" class="avatar-layer" id="mouth1">
+      <img src="mouth2.jpg" alt="Mouth 2" class="avatar-layer" id="mouth2">
+      <img src="mouth3.jpg" alt="Mouth 3" class="avatar-layer" id="mouth3">
+      <img src="mouth4.jpg" alt="Mouth 4" class="avatar-layer" id="mouth4">
+    </div>
+    <div class="layer">
+      <img src="nose1.jpg" alt="Nose 1" class="avatar-layer" id="nose1">
+      <img src="nose2.jpg" alt="Nose 2" class="avatar-layer" id="nose2">
+      <img src="nose3.jpg" alt="Nose 3" class="avatar-layer" id="nose3">
+      <img src="nose4.jpg" alt="Nose 4" class="avatar-layer" id="nose4">
+    </div>
+  </div>
+  <button class="submit-btn" onclick="submitAvatar()">Submit</button>
+
+  <div class="preview">
+    <h2 class="preview-title">Avatar Preview</h2>
+    <div class="avatar-preview" id="avatarPreview"></div>
+  </div>
+
+  <script>
+    // JavaScript code to handle avatar selection
+    const layers = document.querySelectorAll('.layer');
+    const avatarPreview = document.getElementById('avatarPreview');
+
+    function selectLayer() {
+      // Remove the 'selected' class from all layers' avatar layers
+      layers.forEach(layer => {
+        const avatarLayers = layer.querySelectorAll('.avatar-layer');
+        avatarLayers.forEach(avatarLayer => {
+          avatarLayer.classList.remove('selected');
+        });
+      });
+
+      // Add the 'selected' class to the clicked avatar layer
+      this.classList.add('selected');
+
+      // Update the avatar preview
+      updateAvatarPreview();
+    }
+
+    function updateAvatarPreview() {
+      // Get the selected avatar layers
+      const selectedLayers = [];
+      layers.forEach(layer => {
+        const selectedLayer = layer.querySelector('.selected');
+        if (selectedLayer) {
+          selectedLayers.push(selectedLayer.src);
+        }
+      });
+
+      // Generate the avatar preview image URL
+      const avatarURL = generateAvatarURL(selectedLayers);
+
+      // Update the background image of the avatar preview element
+      avatarPreview.style.backgroundImage = `url(${avatarURL})`;
+    }
+
+    function generateAvatarURL(selectedLayers) {
+      // Customize this function to generate the avatar URL based on the selected layers
+      // You can use the selectedLayers array to construct the URL dynamically
+      // This is just a placeholder example
+      return selectedLayers.join(','); // Use the image URLs as a comma-separated string
+    }
+
+    function submitAvatar() {
+      // Get the selected avatar layers
+      const selectedLayers = [];
+      layers.forEach(layer => {
+        const selectedLayer = layer.querySelector('.selected');
+        if (selectedLayer) {
+          selectedLayers.push(selectedLayer.src);
+        }
+      });
+
+      // Generate the avatar preview image URL
+      const avatarURL = generateAvatarURL(selectedLayers);
+
+      // Redirect to the course selection page with the selected avatar URL as a query parameter
+      const courseSelectionURL = `CourseSelection.html?avatarURL=${encodeURIComponent(avatarURL)}`;
+      window.location.href = courseSelectionURL;
+    }
+
+    layers.forEach(layer => {
+      const avatarLayers = layer.querySelectorAll('.avatar-layer');
+      avatarLayers.forEach(avatarLayer => {
+        avatarLayer.addEventListener('click', selectLayer);
+      });
+    });
+  </script>
+</body>
+</html>

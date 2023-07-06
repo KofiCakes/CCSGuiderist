@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #36393f;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+    }
+
+    .avatar-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #43b581;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Select Your Course</h1>
+  <div class="avatar-container">
+    <img src="avatar.jpg" alt="User Avatar" class="avatar" id="userAvatar">
+  </div>
+  <div class="button-container">
+    <button class="button" onclick="navigateTo('EssayPart.html')">BS Computer Science</button>
+    <button class="button" onclick="navigateTo('EssayPart.html')">BS Information Systems</button>
+  </div>
+
+  <script>
+    function navigateTo(url) {
+      window.location.href = url;
+    }
+
+    // Get the selected avatar URL from the URL query parameter
+    function getSelectedAvatarURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const avatarURL = urlParams.get('avatarURL');
+      return avatarURL;
+    }
+
+    // Set the selected avatar image on page load
+    window.addEventListener('load', function() {
+      const avatarImg = document.getElementById('userAvatar');
+      const selectedAvatarURL = getSelectedAvatarURL();
+      if (selectedAvatarURL) {
+        avatarImg.src = selectedAvatarURL;
+      }
+    });
+  </script>
+</body>
+</html>

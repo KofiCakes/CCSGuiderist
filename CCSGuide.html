@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Login - CCS Guide</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #2f3136;
+			color: #fff;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: #fff;
+			margin-top: 50px;
+		}
+		form {
+			max-width: 400px;
+			margin: 0 auto;
+			background-color: #36393f;
+			border: 1px solid #202225;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			margin-top: 30px;
+			overflow: hidden;
+		}
+		form label {
+			display: block;
+			margin-bottom: 10px;
+			color: #fff;
+		}
+		form input[type="text"],
+		form input[type="password"] {
+			width: 95%;
+			padding: 10px;
+			font-size: 16px;
+			background-color: #40444b;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+		}
+		form button {
+			background-color: #00A67E;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+		.footer {
+		background-color: black;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 50px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		font-size: 14px;
+	}
+
+	.footer p {
+		margin: 0;
+	}
+	</style>
+</head>
+<body>
+	<h1>CCS GUIDE</h1>
+	<form>
+		<label for="studNum">Student Number</label>
+		<input type="text" id="studNum" name="studNum">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password">
+		<button type="button" onclick="validateLogin()">Log In</button>
+	</form>
+	<div class="footer">
+		<p>&copy; 2023 CCS Guide. All rights reserved.</p>
+	</div>
+
+	<script>
+		function validateLogin() {
+			var studentNumInput = document.getElementById("studNum").value;
+			var passwordInput = document.getElementById("password").value;
+
+			// Check if student number and password match the desired values
+			if (studentNumInput === "02200084" && passwordInput === "Testing101") {
+				// Redirect to CCSChat.html
+				window.location.href = "CCSchat.html";
+			} else {
+				// Show error message
+				alert("Incorrect Student Number or Password");
+			}
+		}
+	</script>
+</body>
+</html>

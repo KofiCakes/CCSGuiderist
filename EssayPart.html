@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Written Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #36393f;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+    }
+
+    h2 {
+      margin: 5px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .textbox-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .textbox {
+      width: 600px;
+      height: 200px;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #000;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      background-color: #fff;
+      resize: none;
+    }
+
+    .submit-button {
+      display: block;
+      background-color: #43b581;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .lines-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    .line {
+      margin-bottom: 10px;
+    }
+
+    .left-aligned {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tell us about yourself</h1>
+  <div class="lines-container left-aligned">
+    <h2>Essay Guide Questions</h2>
+    <div class="line">
+      <h2>1. What are your interests/hobbies?</h2>
+      <textarea class="textbox" placeholder="Write your answer here..."></textarea>
+    </div>
+    <div class="line">
+      <h2>2. What applications do you often use?</h2>
+      <textarea class="textbox" placeholder="Write your answer here..."></textarea>
+    </div>
+    <div class="line">
+      <h2>3. On what job do you see yourself in the future?</h2>
+      <textarea class="textbox" placeholder="Write your answer here..."></textarea>
+    </div>
+    <div class="line">
+      <h2>4. What are your skills?</h2>
+      <textarea class="textbox" placeholder="Write your answer here..."></textarea>
+    </div>
+  </div>
+
+  <div class="textbox-container">
+    <button class="submit-button" id="submitBtn">Submit</button>
+  </div>
+
+  <script>
+    const submitButton = document.getElementById('submitBtn');
+
+    submitButton.addEventListener('click', function() {
+      // Redirect to the next HTML file
+      window.location.href = 'GradesFirstYear.html';
+    });
+  </script>
+</body>
+</html>
